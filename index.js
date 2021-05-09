@@ -14,8 +14,6 @@ if (!checkRequiredProperties(CLIargs)) {
 let useStdIn = CLIargs.input === '' ;
 let useStdOut = CLIargs.output === '';
 
-console.log(CLIargs, useStdIn, useStdOut);
-
 let readableStream = useStdIn? process.openStdin(): getReadableStreamFromFile(CLIargs.input);
 let writableStream = useStdOut ? process.stdout : getWritableableStreamFromFile(CLIargs.output);
 let transformStream = new myTransform({
