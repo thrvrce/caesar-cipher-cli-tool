@@ -9,7 +9,7 @@ export class myTransform extends Transform {
 
   _transform(chunk, encoding, callback) {
     try {
-      const resultString = this.transformFunc(chunk.toString());
+      const resultString = this.transformFunc(chunk.toString(), this.shift);
       console.log(`Into transform method: ${chunk.toString()}`);
       callback(null, resultString);
     } catch (err) {
@@ -17,17 +17,3 @@ export class myTransform extends Transform {
     }
   }
 }
-
-// const transformStream = new Transform({
-//   transform(chunk, enc, callback) {
-//     try {
-//       const resultString = `*${chunk.toString('utf8')}`;
-//       console.log(`Into transform method: ${chunk.toString()}`);
-//       callback(null, resultString);
-//     } catch (err) {
-//       callback(err);
-//     }
-//   }
-// });
-
-// export default transformStream;
