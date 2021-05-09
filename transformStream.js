@@ -1,15 +1,32 @@
 import { Transform } from 'stream';
 
-const transformStream = new Transform({
-  transform(chunk, enc, callback) {
+export class myTransform extends Transform {
+  constructor(opt) {
+    super(opt);
+    this.transformFunc = opt.transformFunc;
+  }
+
+  _transform(chunk, encoding, callback) {
     try {
-      const resultString = `*${chunk.toString('utf8')}`;
+      const resultString = this.transformFunc(chunk.toString());
       console.log(`Into transform method: ${chunk.toString()}`);
       callback(null, resultString);
     } catch (err) {
       callback(err);
     }
   }
-});
+}
 
-export default transformStream;
+// const transformStream = new Transform({
+//   transform(chunk, enc, callback) {
+//     try {
+//       const resultString = `*${chunk.toString('utf8')}`;
+//       console.log(`Into transform method: ${chunk.toString()}`);
+//       callback(null, resultString);
+//     } catch (err) {
+//       callback(err);
+//     }
+//   }
+// });
+
+// export default transformStream;

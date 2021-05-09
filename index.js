@@ -1,6 +1,6 @@
-import  {getCLIArgs, checkRequiredProperties} from './CLI_funcs.js';
+import {getCLIArgs, checkRequiredProperties} from './CLI_funcs.js';
 import {getReadableStreamFromFile, getWritableableStreamFromFile} from './files.js';
-import transformStream from './transformStream.js';
+import {myTransform} from './transformStream.js';
 import { pipeline } from 'stream';
 
 const CLIargs = getCLIArgs();
@@ -17,6 +17,7 @@ console.log(CLIargs, useStdIn, useStdOut);
 
 let readableStream = useStdIn? process.openStdin(): getReadableStreamFromFile(CLIargs.input);
 let writableStream = useStdOut ? process.stdout : getWritableableStreamFromFile(CLIargs.output);
+let transformStream = new myTransform({transformFunc: (char)=> char.toUpperCase()});
 
 pipeline(
   readableStream,
