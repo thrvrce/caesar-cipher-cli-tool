@@ -26,7 +26,11 @@ pipeline(
   transformStream,
   writableStream,
   (error) => {
-    if (error) {error.message}
+    if (error) {
+      console.error(error.message)
+      process.stderr.write('Receive process.exit command with code 2.\n')
+      process.exit(2);
+    }
     else {
       console.log('Done!')
     }
