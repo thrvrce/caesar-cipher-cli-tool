@@ -17,7 +17,7 @@ console.log(CLIargs, useStdIn, useStdOut);
 
 let readableStream = useStdIn? process.openStdin(): getReadableStreamFromFile(CLIargs.input);
 let writableStream = useStdOut ? process.stdout : getWritableableStreamFromFile(CLIargs.output);
-let transformStream = new myTransform({transformFunc: (char)=> char.toUpperCase()});
+let transformStream = new myTransform({transformFunc: (char)=> char.toUpperCase(), shift: CLIargs.shift});
 
 pipeline(
   readableStream,

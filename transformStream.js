@@ -4,6 +4,7 @@ export class myTransform extends Transform {
   constructor(opt) {
     super(opt);
     this.transformFunc = opt.transformFunc;
+    this.shift = opt.shift
   }
 
   _transform(chunk, encoding, callback) {
