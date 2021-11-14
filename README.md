@@ -1,20 +1,15 @@
-# caesar-cipher-cli-tool
-caesar-cipher-cli-tool task
+# Ciphering CLI Tool
+Ciphering CLI Tool
 
-В случае проблем, напишите, пожалуйста, в Discord _Viktor#7903
-
-1. Для установки зависимостей необходимо выполнить команду **npm -i**.
-2. Для запуска приложения используйте команду **node index** указав следующие пааметры:
-  - -a, --action. Обязательный параметр отвечающий за осуществляемое действие. encode - кодирование текста, decode - декодирование текста.
-  - -s, --shift. Обязательный параметр отвечающий за сдвиг символов латинского алфавита. Может принимать отрицательные значения. Для ввода отрицательного значения используется симол "=" после параметра (-s=-1 или --shift=-1).
-  - -i, --input. Параметр отвечающий за путь к файлу-источнику текста для шифрования. Не является обязательным. При отсутствии ввод осуществляется из консоли.
-  - -o, --output. Параметр отвечающий за путь к файлу-приемнику текста для шифрования. Не является обязательным. При отсутствии вывод осуществляется в консоль.
-3. Примеры:
-  - node index -a encode --shift 1 --input plain.txt --output encoded.txt
-  - node index -a encode --shift=-1 --input plain.txt --output encoded.txt
-  - node index -a encode --shift=-1 --input plain.txt
-  - node index -a encode --shift=-1 --output encoded.txt
-  - node index -a encode -s 7 -i "./input.txt" -o "./output.txt"
-  - node index -a encode -s=-7 -i "./input.txt" -o "./output.txt"
-  - node index -a encode -s 7 -i "./input.txt"
-  - node index -a encode -s 7 -o "./output.txt"
+CLI tool can be started by command node index.js --config C1
+CLI tool accepts 3 options (short alias and full name):
+1. -c, --config: required parameter for ciphers Config is a string with pattern {XY(-)}n, where:
+  - X is a cipher mark:
+    - C is for Caesar cipher (with shift 1)
+    - A is for Atbash cipher
+    - R is for ROT-8 cipher
+  - Y is flag of encoding or decoding (mandatory for Caesar cipher and ROT-8 cipher and should not be passed Atbash cipher)
+    - 1 is for encoding
+    - 0 is for decoding
+2. -i, --input: a path to input file
+3. -o, --output: a path to output file
