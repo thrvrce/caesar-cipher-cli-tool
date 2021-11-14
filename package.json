@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "minimist": "^1.2.5"
+  },
+  "type": "module",
+  "name": "caesar-cipher-cli-tool",
+  "description": "caesar-cipher-cli-tool task",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thrvrce/caesar-cipher-cli-tool.git"
+  },
+  "author": "thrvrce",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thrvrce/caesar-cipher-cli-tool/issues"
+  },
+  "homepage": "https://github.com/thrvrce/caesar-cipher-cli-tool#readme"
+}
