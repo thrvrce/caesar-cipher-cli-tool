@@ -1,5 +1,5 @@
 const checkCipherConfigArgument = (cipherConfigString) => {
-  const streamConfigs = cipherConfigString.split('-');
+  const streamConfigs = cipherConfigString?.split('-') ?? [];
   const checkResult = {
     valid: streamConfigs.length > 0,
     messages: [],
@@ -30,6 +30,8 @@ const checkCipherConfigArgument = (cipherConfigString) => {
 
       return true;
     });
+  } else {
+    checkResult.messages.push(`Config parameter was not passed.`)
   }
   return checkResult;
 }
@@ -64,7 +66,11 @@ const getCLIArgs = ()=> {
       const nextArgument = cliArgs[cliArgsArrayIndex +1];
       const nextCliArgIsValue = !argumentIsParameter(nextArgument);
       hasDuplicatedArguments = parameterName in parsedArguments;
-
+      if (hasDuplicatedArguments) {
+        process.stderr.write('CLI has diplicated arguments.\n')
+        process.stderr.write('Receive process.exit command with code 3.\n')
+        process.exit(3);
+      }
       if (nextCliArgIsValue) {
         parsedArguments[parameterName] = nextArgument;
         cliArgsArrayIndex += 2;
@@ -76,11 +82,7 @@ const getCLIArgs = ()=> {
     }
   }
 
-  if (hasDuplicatedArguments) {
-    process.stderr.write('CLI has diplicated arguments.\n')
-    process.stderr.write('Receive process.exit command with code 3.\n')
-    process.exit(3);
-  }
+
 
   const {c, config, i, input, o, output,} = parsedArguments;
   return {
@@ -90,4 +92,4 @@ const getCLIArgs = ()=> {
   }
 };
 
-export {getCLIArgs, checkRequiredProperties};
+export {getCLIArgs, checkRequiredProperties, checkCipherConfigArgument, argumentIsParameter};
