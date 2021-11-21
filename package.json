@@ -1,7 +1,4 @@
 {
-  "dependencies": {
-    "minimist": "^1.2.5"
-  },
   "type": "module",
   "name": "caesar-cipher-cli-tool",
   "description": "caesar-cipher-cli-tool task",
